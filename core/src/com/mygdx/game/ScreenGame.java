@@ -29,10 +29,10 @@ public class ScreenGame implements Screen {
     boolean musicOn = true;
 
     // кнопки интерфейса игры
-    MosButton btnExit;
+    TargetButton btnExit;
 
     // создаём массив ссылок на объекты комаров
-    Mosquito[] komar = new Mosquito[15];
+    Target[] komar = new Target[15];
     int kills;
 
     // переменные для работы с таймером
@@ -69,7 +69,7 @@ public class ScreenGame implements Screen {
         sndMusic.setVolume(0.5f);
 
         // создаём кнопки
-        btnExit = new MosButton(SCR_WIDTH -60, SCR_HEIGHT -60, 50);
+        btnExit = new TargetButton(SCR_WIDTH -60, SCR_HEIGHT -60, 50);
 
         for (int i = 0; i < players.length; i++) {
             players[i] = new Player("noname", 0);
@@ -164,7 +164,7 @@ public class ScreenGame implements Screen {
         kills = 0;
         // создаём объекты комаров
         for(int i=0; i<komar.length; i++){
-            komar[i] = new Mosquito();
+            komar[i] = new Target();
         }
         // включаем музыку
         if(musicOn) {

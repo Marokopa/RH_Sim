@@ -1,10 +1,10 @@
 package com.mygdx.game;
 
-public class MosButton {
+public class TargetButton {
     float x, y;
     float width, height;
 
-    public MosButton(float x, float y, float size){
+    public TargetButton(float x, float y, float size){
         width = height = size;
         this.x = x;
         this.y = y;

@@ -5,14 +5,14 @@ import static com.mygdx.game.MyGdxGame.SCR_WIDTH;
 
 import com.badlogic.gdx.math.MathUtils;
 
-public class Mosquito {
+public class Target {
     float x, y;
     float vx, vy;
     float width, height;
     int faza, nFaz = 10;
     boolean isAlive = true;
 
-    public Mosquito(){
+    public Target(){
         width = height = MathUtils.random(100, 250);
         x = SCR_WIDTH /2-width/2;
         y = SCR_HEIGHT /2-height/2;
