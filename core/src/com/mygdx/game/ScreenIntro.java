@@ -16,15 +16,17 @@ public class ScreenIntro implements Screen {
     TextButton btnSettings;
     TextButton btnAbout;
     TextButton btnExit;
+    TextButton btnName;
 
     public ScreenIntro(MyGdxGame g) {
         mgg = g;
 
         imgBackGround = new Texture("905fb3bc53ca345f5f28f498b44e58b4.jpg");
-        btnPlay = new TextButton(mgg.font, "Play", 500, 500);
-        btnSettings = new TextButton(mgg.font, "Settings", 500, 400);
-        btnAbout = new TextButton(mgg.font, "About", 500, 300);
-        btnExit = new TextButton(mgg.font, "Exit", 500, 200);
+        btnName = new TextButton(mgg.font, "Robin Hood Simulator", 350, 650);
+        btnPlay = new TextButton(mgg.font, "Play", 0, 500);
+        btnSettings = new TextButton(mgg.font, "Settings", 0, 400);
+        btnAbout = new TextButton(mgg.font, "About", 0, 300);
+        btnExit = new TextButton(mgg.font, "Exit", 0, 200);
     }
 
     @Override
@@ -60,6 +62,7 @@ public class ScreenIntro implements Screen {
         mgg.batch.setProjectionMatrix(mgg.camera.combined);
         mgg.batch.begin();
         mgg.batch.draw(imgBackGround, 0, 0, SCR_WIDTH, SCR_HEIGHT);
+        btnName.font.draw(mgg.batch, btnName.text, btnName.x, btnName.y);
         btnPlay.font.draw(mgg.batch, btnPlay.text, btnPlay.x, btnPlay.y);
         btnSettings.font.draw(mgg.batch, btnSettings.text, btnSettings.x, btnSettings.y);
         btnAbout.font.draw(mgg.batch, btnAbout.text, btnAbout.x, btnAbout.y);
