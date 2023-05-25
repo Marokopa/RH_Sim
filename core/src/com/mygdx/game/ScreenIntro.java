@@ -22,11 +22,11 @@ public class ScreenIntro implements Screen {
         mgg = g;
 
         imgBackGround = new Texture("905fb3bc53ca345f5f28f498b44e58b4.jpg");
-        btnName = new TextButton(mgg.font, "Robin Hood Simulator", 350, 650);
-        btnPlay = new TextButton(mgg.font, "Play", 0, 500);
-        btnSettings = new TextButton(mgg.font, "Settings", 0, 400);
-        btnAbout = new TextButton(mgg.font, "About", 0, 300);
-        btnExit = new TextButton(mgg.font, "Exit", 0, 200);
+        btnName = new TextButton(mgg.font, "Robin Hood Simulator", 340, 650);
+        btnPlay = new TextButton(mgg.font, "Play", 15, 480);
+        btnSettings = new TextButton(mgg.font, "Settings", 15, 380);
+        btnAbout = new TextButton(mgg.font, "About", 15, 280);
+        btnExit = new TextButton(mgg.font, "Exit", 15, 180);
     }
 
     @Override
