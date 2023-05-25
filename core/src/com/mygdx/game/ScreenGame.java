@@ -15,13 +15,14 @@ import com.badlogic.gdx.utils.TimeUtils;
 public class ScreenGame implements Screen {
     MyGdxGame mgg;
 
-    Texture[] imgKomar = new Texture[11]; // ссылки на изображения
+    Texture[] imgTarget = new Texture[11]; // ссылки на изображения
     Texture imgBackGround; // фоновое изображение
     Texture imgBtnExit;
     Texture imgBtnSndOn, imgBtnSndOff;
+    Texture imgArrow;
     //Texture imgBtnPause, imgBtnPlay;
 
-    Sound[] sndKomar = new Sound[2];
+    Sound[] sndTarget = new Sound[2];
     Music sndMusic;
 
     // логические переменные
@@ -32,7 +33,7 @@ public class ScreenGame implements Screen {
     TargetButton btnExit;
 
     // создаём массив ссылок на объекты комаров
-    Target[] komar = new Target[15];
+    Target[] targets = new Target[15];
     int kills;
 
     // переменные для работы с таймером
@@ -52,17 +53,18 @@ public class ScreenGame implements Screen {
         mgg = g;
 
         // загружаем картинки
-        for(int i=0; i<imgKomar.length; i++) {
-            imgKomar[i] = new Texture("mosq"+i+".png"); // создать объект-картинку и загрузить в него изображение
+        for(int i = 0; i< imgTarget.length; i++) {
+            imgTarget[i] = new Texture("mosq"+i+".png"); // создать объект-картинку и загрузить в него изображение
         }
         imgBackGround = new Texture("453ef0af0d438db750cb331db278bcd4.jpg");
         imgBtnExit = new Texture("exit.png");
         imgBtnSndOn = new Texture("sndon.png");
         imgBtnSndOff = new Texture("sndoff.png");
+        imgArrow = new Texture("arrow.png");
 
         // загружаем звуки
-        for(int i=0; i<sndKomar.length; i++) {
-            sndKomar[i] = Gdx.audio.newSound(Gdx.files.internal("mos"+i+".mp3"));
+        for(int i = 0; i< sndTarget.length; i++) {
+            sndTarget[i] = Gdx.audio.newSound(Gdx.files.internal("mos"+i+".mp3"));
         }
         sndMusic = Gdx.audio.newMusic(Gdx.files.internal("jinglebells.mp3"));
         sndMusic.setLooping(true);
@@ -89,13 +91,13 @@ public class ScreenGame implements Screen {
             mgg.touch.set(Gdx.input.getX(), Gdx.input.getY(), 0);
             mgg.camera.unproject(mgg.touch);
             if(situation == PLAY_GAME) {
-                for (int i = komar.length - 1; i >= 0; i--) {
-                    if (komar[i].isAlive && komar[i].hit(mgg.touch.x, mgg.touch.y)) {
+                for (int i = targets.length - 1; i >= 0; i--) {
+                    if (targets[i].isAlive && targets[i].hit(mgg.touch.x, mgg.touch.y)) {
                         kills++;
                         if (soundOn) {
-                            sndKomar[MathUtils.random(0, 1)].play();
+                            sndTarget[MathUtils.random(0, 1)].play();
                         }
-                        if (kills == komar.length) {
+                        if (kills == targets.length) {
                             situation = ENTER_NAME;
                         }
                         break;
@@ -123,8 +125,8 @@ public class ScreenGame implements Screen {
         }
 
         // события игры
-        for(int i=0; i<komar.length; i++) {
-            komar[i].fly();
+        for(int i = 0; i< targets.length; i++) {
+            targets[i].fly();
         }
         if(situation == PLAY_GAME) {
             timeCurrently = TimeUtils.millis() - timeStartGame;
@@ -135,8 +137,11 @@ public class ScreenGame implements Screen {
         mgg.batch.setProjectionMatrix(mgg.camera.combined);
         mgg.batch.begin();
         mgg.batch.draw(imgBackGround, 0, 0, SCR_WIDTH, SCR_HEIGHT);
-        for(int i=0; i<komar.length; i++) {
-            mgg.batch.draw(imgKomar[komar[i].faza], komar[i].x, komar[i].y, komar[i].width, komar[i].height, 0, 0, 500, 500, komar[i].isFlip(), false);
+        for(int i = 0; i< targets.length; i++) {
+            mgg.batch.draw(imgTarget[targets[i].faza], targets[i].x, targets[i].y, targets[i].width, targets[i].height, 0, 0, 500, 500, targets[i].isFlip(), false);
+            if(!targets[i].isAlive){
+                mgg.batch.draw(imgArrow, targets[i].x+targets[i].width/2-25, targets[i].y, 50, 100, 0, 0, 50, 100, targets[i].isFlip(), false);
+            }
         }
         mgg.batch.draw(imgBtnExit, btnExit.x, btnExit.y, btnExit.width, btnExit.height);
 
@@ -163,8 +168,8 @@ public class ScreenGame implements Screen {
         situation = PLAY_GAME;
         kills = 0;
         // создаём объекты комаров
-        for(int i=0; i<komar.length; i++){
-            komar[i] = new Target();
+        for(int i = 0; i< targets.length; i++){
+            targets[i] = new Target();
         }
         // включаем музыку
         if(musicOn) {
@@ -246,11 +251,11 @@ public class ScreenGame implements Screen {
 
     @Override
     public void dispose() {
-        for (int i = 0; i < imgKomar.length; i++) {
-            imgKomar[i].dispose();
+        for (int i = 0; i < imgTarget.length; i++) {
+            imgTarget[i].dispose();
         }
-        for (int i = 0; i < sndKomar.length; i++) {
-            sndKomar[i].dispose();
+        for (int i = 0; i < sndTarget.length; i++) {
+            sndTarget[i].dispose();
         }
         imgBackGround.dispose();
         imgBtnExit.dispose();
