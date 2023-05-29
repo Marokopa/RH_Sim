@@ -24,7 +24,7 @@ public class ScreenAbout implements Screen {
     public ScreenAbout(MyGdxGame g) {
         mgg = g;
 
-        imgBackGround = new Texture("1bca047330233703a5a66e0c4147350c.jpg");
+        imgBackGround = new Texture("About_image.jpg");
 
         btnBack = new TextButton(mgg.font, "Back", 500, 100);
     }

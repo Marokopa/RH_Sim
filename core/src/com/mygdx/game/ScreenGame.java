@@ -56,7 +56,7 @@ public class ScreenGame implements Screen {
         for(int i = 0; i< imgTarget.length; i++) {
             imgTarget[i] = new Texture("mosq"+i+".png"); // создать объект-картинку и загрузить в него изображение
         }
-        imgBackGround = new Texture("453ef0af0d438db750cb331db278bcd4.jpg");
+        imgBackGround = new Texture("Play.jpg");
         imgBtnExit = new Texture("exit.png");
         imgBtnSndOn = new Texture("sndon.png");
         imgBtnSndOff = new Texture("sndoff.png");
@@ -66,7 +66,7 @@ public class ScreenGame implements Screen {
         for(int i = 0; i< sndTarget.length; i++) {
             sndTarget[i] = Gdx.audio.newSound(Gdx.files.internal("mos"+i+".mp3"));
         }
-        sndMusic = Gdx.audio.newMusic(Gdx.files.internal("jinglebells.mp3"));
+        sndMusic = Gdx.audio.newMusic(Gdx.files.internal("music.mp3"));
         sndMusic.setLooping(true);
         sndMusic.setVolume(0.5f);
 
@@ -140,7 +140,7 @@ public class ScreenGame implements Screen {
         for(int i = 0; i< targets.length; i++) {
             mgg.batch.draw(imgTarget[targets[i].faza], targets[i].x, targets[i].y, targets[i].width, targets[i].height, 0, 0, 500, 500, targets[i].isFlip(), false);
             if(!targets[i].isAlive){
-                mgg.batch.draw(imgArrow, targets[i].x+targets[i].width/2-25, targets[i].y, 50, 100, 0, 0, 50, 100, targets[i].isFlip(), false);
+                mgg.batch.draw(imgArrow, targets[i].x+targets[i].width/2-32, targets[i].y-10, 50, 100, 0, 0, 50, 100, targets[i].isFlip(), false);
             }
         }
         mgg.batch.draw(imgBtnExit, btnExit.x, btnExit.y, btnExit.width, btnExit.height);

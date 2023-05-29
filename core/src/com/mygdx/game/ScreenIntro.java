@@ -21,8 +21,8 @@ public class ScreenIntro implements Screen {
     public ScreenIntro(MyGdxGame g) {
         mgg = g;
 
-        imgBackGround = new Texture("905fb3bc53ca345f5f28f498b44e58b4.jpg");
-        btnName = new TextButton(mgg.font, "Robin Hood Simulator", 340, 650);
+        imgBackGround = new Texture("Menu.jpg");
+        btnName = new TextButton(mgg.font, "Robin Hood Simulator", 340, 690);
         btnPlay = new TextButton(mgg.font, "Play", 15, 480);
         btnSettings = new TextButton(mgg.font, "Settings", 15, 380);
         btnAbout = new TextButton(mgg.font, "About", 15, 280);

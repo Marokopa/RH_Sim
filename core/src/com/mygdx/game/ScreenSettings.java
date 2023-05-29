@@ -20,11 +20,11 @@ public class ScreenSettings implements Screen {
     public ScreenSettings(MyGdxGame g) {
         mgg = g;
 
-        imgBackGround = new Texture("333208.jpg");
-        btnSound = new TextButton(mgg.font, "Sound on", 500, 500);
-        btnMusic = new TextButton(mgg.font, "Music on", 500, 400);
-        btnClearTable = new TextButton(mgg.font, "Clear records", 500, 300);
-        btnBack = new TextButton(mgg.font, "Back", 500, 200);
+        imgBackGround = new Texture("Settings_image.jpg");
+        btnSound = new TextButton(mgg.font, "Sound on", 15, 500);
+        btnMusic = new TextButton(mgg.font, "Music on", 15, 400);
+        btnClearTable = new TextButton(mgg.font, "Clear records", 15, 300);
+        btnBack = new TextButton(mgg.font, "Back", 15, 200);
     }
 
     @Override
@@ -73,10 +73,10 @@ public class ScreenSettings implements Screen {
         mgg.batch.setProjectionMatrix(mgg.camera.combined);
         mgg.batch.begin();
         mgg.batch.draw(imgBackGround, 0, 0, SCR_WIDTH, SCR_HEIGHT);
-        btnSound.font.draw(mgg.batch, btnSound.text, btnSound.x, btnSound.y);
-        btnMusic.font.draw(mgg.batch, btnMusic.text, btnMusic.x, btnMusic.y);
-        btnClearTable.font.draw(mgg.batch, btnClearTable.text, btnClearTable.x, btnClearTable.y);
-        btnBack.font.draw(mgg.batch, btnBack.text, btnBack.x, btnBack.y);
+        btnSound.font.draw(mgg.batch, btnSound.text, 15, btnSound.y);
+        btnMusic.font.draw(mgg.batch, btnMusic.text, 15, btnMusic.y);
+        btnClearTable.font.draw(mgg.batch, btnClearTable.text, 15, btnClearTable.y);
+        btnBack.font.draw(mgg.batch, btnBack.text, 15, btnBack.y);
         mgg.batch.end();
     }
 
