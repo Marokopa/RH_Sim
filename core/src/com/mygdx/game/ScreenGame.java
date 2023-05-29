@@ -54,7 +54,7 @@ public class ScreenGame implements Screen {
 
         // загружаем картинки
         for(int i = 0; i< imgTarget.length; i++) {
-            imgTarget[i] = new Texture("mosq"+i+".png"); // создать объект-картинку и загрузить в него изображение
+            imgTarget[i] = new Texture("target"+i+".png"); // создать объект-картинку и загрузить в него изображение
         }
         imgBackGround = new Texture("Play.jpg");
         imgBtnExit = new Texture("exit.png");
